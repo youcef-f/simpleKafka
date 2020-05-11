@@ -8,11 +8,11 @@
 ![](doc/images/xxxxxxxxx)
 
 
-Attention il existe de type de traitmeent le traitment dit batch processing et le stream processing.
+Attention il existe deux type de traitment: 
 
-**Batch processing** traite les données à intervale plus au moins longue suivant un periodicité.
-**Stream processing** traite la données dès qu'elle arrive.
-il existe une variate de Stream processing que l'on appelle **micro batch processing** qui se charge de traité les donées plus à fréquence très courtes de lors de la seconde.
+- **Batch processing** traite les données à intervale plus au moins longue suivant un periodicité.  
+- **Stream processing** traite la données dès qu'elle arrive.  
+      Il existe une variate de Stream processing que l'on appelle **micro batch processing** qui se charge de traité les donées plus à fréquence très courtes de lors de la seconde.
 
 ![](doc/images/batchprocessing.jpg)
 
@@ -21,8 +21,8 @@ il existe une variate de Stream processing que l'on appelle **micro batch proces
 ![](doc/images/streamprocessing1.jpg)
 
 
-
-En cas de probleme de version java rencontré prévoir de modifier le fichier de configuration d'eclipse **.setting/org.eclipse.jdt.core.prefs** pour prendre en compte la version de java 1.8
+## probleme version java
+En cas de probleme de version java , prévoir de modifier le fichier de configuration d'eclipse **.setting/org.eclipse.jdt.core.prefs** pour prendre en compte la version de java 1.8
 ````shell script
 ./..
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
@@ -31,7 +31,7 @@ org.eclipse.jdt.core.compiler.source=1.8
 ../..
 ````
 
-# lancement de kafka
+## lancement de kafka
 
 Lancer une instance de zookeper et une instance de kafka
 - lancement de **zookerper**
@@ -46,17 +46,18 @@ C:\kafka_2.12-2.5.0>.\bin\windows\kafka-server-start.bat .\config\server.propert
 
 
 ## creation d'un topic.
+
 ![](doc/images/partitionConsumers.jpg)
-Il faut au moins autant de **partition** qu'il n'y de **consumer**
+Il faut au moins autant de **partition** qu'il n'y de **consumer**  
+````shell script
 λ .\bin\windows\kafka-topics.bat  --zookeeper  localhost:2181 --create --replication-factor 1 --partitions 2 --topic test3
 Created topic test3.
-
+````
 
 ## lancer un producer 
 ````shell script
 C:\kafka_2.12-2.5.0
 λ .\bin\windows\kafka-console-producer.bat   --broker-list localhost:9092 --topic test3
-
 ````
 
 
@@ -87,8 +88,8 @@ __consumer_offsets
 ````                                                                                
                                                                   
 
-## Les groups
-Au sein d'un group les données en prevenance d'un topic sont lus altenativements par le consumer1, consumer2 ..consumerN. Les lectures sont faites en RoundRobin. Si l'on souhaite que tous les consommateurs reussissent à lire des messages il faut veiller à avoir autant de partitions pour un topic donné que de consummers.
+## Les groupes de consumers
+Au sein d'un groupe consituant de consumers, les données en prevenance d'un topic sont lus altenativements par le consumer1, consumer2 ..consumerN. Les lectures sont faites en RoundRobin. Si l'on souhaite que tous les consommateurs reussissent à lire des messages il faut veiller à avoir autant de partitions pour un topic donné que de consummers.
 ![](doc/images/consumergroup.jpg)
 
 
