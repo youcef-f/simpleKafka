@@ -47,7 +47,8 @@ C:\kafka_2.12-2.5.0>.\bin\windows\kafka-server-start.bat .\config\server.propert
 
 ## creation d'un topic.
 
-![](doc/images/partitionConsumers.jpg)
+![](doc/images/partitionConsumers.jpg)  
+
 Il faut au moins autant de **partition** qu'il n'y de **consumer**  
 ````shell script
 λ .\bin\windows\kafka-topics.bat  --zookeeper  localhost:2181 --create --replication-factor 1 --partitions 2 --topic test3
